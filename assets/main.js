@@ -8,7 +8,7 @@ botones.forEach((element) => {
   } else {
     element.onclick = () => {
       escribirC(element.innerHTML);
-      dibujarCaracteres(carTemp);
+      //console.log(element.innerHTML);
       console.log();
     };
   }
@@ -40,26 +40,40 @@ const escribirC = (caracter) => {
 };
 
 const caracterf = (caracter) => {
-  carTemp.push(caracter);
+  carTemp += caracter;
+  casilla.innerHTML = carTemp;
 };
 
 const borrar = () => {
-  carTemp.pop();
+  if (casilla === "") {
+    alert("No Nada que borrar que borrar");
+  } else {
+    if (casilla[casilla.length] === ";") {
+      if (carTemp.includes("&nbsp;")) {
+        let vC = carTemp.split("");
+
+        vC.splice(vC.length - 6, vC.length);
+
+        carTemp = vC.join("");
+        console.log(carTemp);
+      }
+    } else {
+      carTemp = carTemp.substring(0, carTemp.length - 1);
+      casilla.innerHTML = carTemp;
+    }
+  }
 };
 
 const saltoLinea = () => {
-  carTemp.push("<br/>");
+  casilla.innerHTML = carTemp += "<br/>";
 };
 
 const espacio = () => {
-  carTemp.push("&nbsp;");
-};
-
-const dibujarCaracteres = (carTemp) => {
-  let newHTML = "";
-
-  carTemp.forEach((element) => {
-    newHTML += element;
+  carTemp += " ";
+  console.log("carTemp", carTemp);
+  carTemp.split("").forEach((element) => {
+    if (element == " ") {
+      casilla.innerHTML = "&nbsp;";
+    }
   });
-  casilla.innerHTML = newHTML;
 };

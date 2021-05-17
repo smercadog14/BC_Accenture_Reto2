@@ -1,0 +1,9 @@
+cadena="123 ";
+
+if (cadena.includes(" ")){
+	
+  for(para cada caracter en blanco) /*indexOf da la posicion*/
+  lo cambias en esa posicion por un &nbsp;
+
+} 
+return nuevacadena
